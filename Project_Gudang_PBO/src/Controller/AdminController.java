@@ -3,7 +3,7 @@ package Controller;
 import Entity.AdminEntity;
 
 
-public class AdminController implements ControllerInterfaces {
+public class AdminController implements DataInterface {
     @Override
     public void insertData(String nama, String password, String noTelp){
         AllObjectModel.adminModel.insertData(new AdminEntity(nama,password,noTelp));

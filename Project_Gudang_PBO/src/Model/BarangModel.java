@@ -1,17 +1,23 @@
 package Model;
 
+import Controller.AllObjectModel;
 import Entity.BarangEntity;
 import Helper.KoneksiDb;
 import java.sql.*;
+import java.util.List;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 
 public class BarangModel {
     Connection conn = KoneksiDb.getconnection();
     private String sql;
     
-    public ArrayList<BarangEntity> getBarang(){ 
-        ArrayList<BarangEntity> arraylistBarang = new ArrayList<>();
+    public List<BarangEntity> getDataBarang(){
+        return AllObjectModel.barangModel.getBarang();
+    }
+    public List<BarangEntity> getBarang(){ 
+        List<BarangEntity> ListBarang = new ArrayList<>();
         try {
             Statement stat = conn.createStatement();
             sql = "SELECT * FROM barang";
@@ -23,16 +29,16 @@ public class BarangModel {
                 barangEntity.setJumlah(rs.getString("jumlah"));
                 barangEntity.setBerat(rs.getString("berat"));
                 barangEntity.setStatus(rs.getInt("status"));
-                arraylistBarang.add(barangEntity);
+                ListBarang.add(barangEntity);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return arraylistBarang; //mengembalikan kumpulandata yg  didpt kedlm arraylistBrg
+        return ListBarang; //mengembalikan kumpulandata yg  didpt kedlm arraylistBrg
     }
     
-    public ArrayList<BarangEntity> getBarang(int id){
-        ArrayList<BarangEntity> arrMahasiswa = new ArrayList<>();
+    public List<BarangEntity> getBarang(int id){
+        List<BarangEntity> arrMahasiswa = new ArrayList<>();
         try {
             sql = "SELECT * FROM barang where id =?";
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -70,6 +76,22 @@ public class BarangModel {
             System.out.println("GAGAL INPUT DATA!!!");
             e.printStackTrace();
         }
+    }
+    public DefaultTableModel dataBarang(){
+        DefaultTableModel dataBarang = new DefaultTableModel();
+        Object[] kolom = {"ID", "NAMA", "JUMLAH", "BERAT", "STATUS"};
+        dataBarang.setColumnIdentifiers(kolom);
+        int size = getDataBarang().size();
+        for(int i = 0; i < size; i++ ){
+            Object[] data = new Object[5];
+            data[0] = AllObjectModel.barangModel.getBarang().get(i).getId();
+            data[1] = AllObjectModel.barangModel.getBarang().get(i).getNama();
+            data[2] = AllObjectModel.barangModel.getBarang().get(i).getJumlah();
+            data[3] = AllObjectModel.barangModel.getBarang().get(i).getBerat();
+            data[4] = AllObjectModel.barangModel.getBarang().get(i).getStatus();
+            dataBarang.addRow(data);
+        }
+        return dataBarang;
     }
     
 }

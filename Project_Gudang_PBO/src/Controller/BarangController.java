@@ -2,16 +2,16 @@ package Controller;
 
 import Entity.BarangEntity;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
+import java.util.List;
 
 public class BarangController implements BarangInterfaces {
    
   
-    public ArrayList<BarangEntity> getDataBarang(){
+    public List<BarangEntity> getDataBarang(){
         return AllObjectModel.barangModel.getBarang();
     }
     
-    public ArrayList<BarangEntity> getById(int ceklogin){
+    public List<BarangEntity> getById(int ceklogin){
         return AllObjectModel.barangModel.getBarang(ceklogin);
     }
     
