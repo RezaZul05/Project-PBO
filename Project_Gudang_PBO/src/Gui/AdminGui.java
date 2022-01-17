@@ -39,7 +39,7 @@ public class AdminGui extends JFrame {
         setVisible(true);
         
         spbarang.setBounds(20, 50, 500, 350);
-        tabelbarang.setModel(AllObjectController.barang.dataBarang());
+        tabelbarang.setModel(AllObjectController.barangmdl.dataBarang());
         add(spbarang);
         
         btnacc.setBounds(540, 50, 110, 25);
@@ -82,7 +82,7 @@ public class AdminGui extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e){
                 int i = tabelbarang.getSelectedRow();
-                textpilih.setText(AllObjectController.barang.dataBarang().getValueAt(i, 0).toString());
+                textpilih.setText(AllObjectController.barangmdl.dataBarang().getValueAt(i, 0).toString());
             }
         });
         
@@ -92,7 +92,7 @@ public class AdminGui extends JFrame {
                 kode = Integer.parseInt(textpilih.getText());
                 AllObjectController.admin.accBarang(kode);
                 JOptionPane.showMessageDialog(null, "Berhasil ACC");
-                tabelbarang.setModel(AllObjectController.barang.dataBarang());
+                tabelbarang.setModel(AllObjectController.barangmdl.dataBarang());
             }
         });
         
@@ -101,7 +101,7 @@ public class AdminGui extends JFrame {
             public void actionPerformed(ActionEvent e){
                 kode = Integer.parseInt(textpilih.getText());
                 AllObjectController.admin.deleteData(kode);
-                tabelbarang.setModel(AllObjectController.barang.dataBarang());
+                tabelbarang.setModel(AllObjectController.barangmdl.dataBarang());
                 JOptionPane.showMessageDialog(null, "Berhasil HAPUS DATA");
             }
         });

@@ -1,6 +1,5 @@
 package Model;
 
-import Controller.AllObjectModel;
 import Entity.BarangEntity;
 import Helper.KoneksiDb;
 import java.sql.*;
