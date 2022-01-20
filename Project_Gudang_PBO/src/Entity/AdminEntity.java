@@ -12,30 +12,11 @@ public class AdminEntity {
         this.noTelp = noTelp;
     }
     
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String Password) {
-        this.Password = Password;
-    }
-
-    public String getNoTelp() {
-        return noTelp;
-    }
-
-    public void setNoTelp(String noTelp) {
-        this.noTelp = noTelp;
-    }
+    public String getNama() { return nama; }
+    public String getPassword() { return Password; }
+    public String getNoTelp() { return noTelp; }
     
-    
-
+    public void setNama(String nama) { this.nama = nama; }
+    public void setPassword(String Password) { this.Password = Password; }
+    public void setNoTelp(String noTelp) { this.noTelp = noTelp; }
 }
